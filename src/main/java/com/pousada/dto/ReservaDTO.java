@@ -11,17 +11,26 @@ import java.time.LocalDateTime;
 @Data
 public class ReservaDTO {
 
-    private int idReserva;
+    private int id;
+
     private StatusReservaEnum statusReserva;
-    private LocalDateTime dataHoraReserva;
-    private TipoReservaEnum tipoReserva;
-    private String nomeFuncionario;
+
+    private LocalDateTime dataHora;
+
+    private TipoReservaEnum tipo;
+
     private LocalDate checkIn;
+
     private LocalDate checkOut;
+
     private int numeroDias;
-    private Double valorReserva;
+
+    private Double custo;
+
     private StatusPagamentoEnum statusPagamento;
-    private int numeroQuarto;
-    private String cpfHospede;
+
+    private int idQuarto;
+
+    private int idHospede;
 
 }

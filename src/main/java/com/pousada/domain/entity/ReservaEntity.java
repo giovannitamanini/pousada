@@ -10,22 +10,20 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
-public class Reserva {
+@Entity(name = "reserva")
+public class ReservaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idReserva;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
 
     @Enumerated(EnumType.STRING)
     private StatusReservaEnum statusReserva;
 
-    private LocalDateTime dataHoraReserva;
+    private LocalDateTime dataHora;
 
     @Enumerated(EnumType.STRING)
-    private TipoReservaEnum tipoReserva;
-
-    private String nomeFuncionario;
+    private TipoReservaEnum tipo;
 
     private LocalDate checkIn;
 
@@ -33,13 +31,13 @@ public class Reserva {
 
     private int numeroDias;
 
-    private Double valorReserva;
+    private Double custo;
 
     @Enumerated(EnumType.STRING)
     private StatusPagamentoEnum statusPagamento;
 
-    private int numeroQuarto;
+    private int idQuarto;
 
-    private String cpfHospede;
+    private int idHospede;
 
 }

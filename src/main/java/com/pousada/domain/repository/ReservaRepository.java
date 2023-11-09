@@ -1,8 +1,7 @@
 package com.pousada.domain.repository;
 
-import com.pousada.domain.entity.Reserva;
+import com.pousada.domain.entity.ReservaEntity;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-public interface ReservaRepository extends CrudRepository<Reserva, Integer> {
+public interface ReservaRepository extends CrudRepository<ReservaEntity, Integer> {
 }
