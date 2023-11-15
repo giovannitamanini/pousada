@@ -36,7 +36,7 @@ public class ReservaEntity {
     @Enumerated(EnumType.STRING)
     private StatusPagamentoEnum statusPagamento;
 
-    private int idQuarto;
+    private int idAcomodacao;
 
     private int idHospede;
 

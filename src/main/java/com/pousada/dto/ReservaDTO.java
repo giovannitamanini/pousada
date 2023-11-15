@@ -29,7 +29,7 @@ public class ReservaDTO {
 
     private StatusPagamentoEnum statusPagamento;
 
-    private int idQuarto;
+    private int idAcomodacao;
 
     private int idHospede;
 
