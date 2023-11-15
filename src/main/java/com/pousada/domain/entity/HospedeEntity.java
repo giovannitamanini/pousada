@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class HospedeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String cpf;
