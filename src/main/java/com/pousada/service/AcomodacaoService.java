@@ -21,6 +21,13 @@ public class AcomodacaoService {
         this.acomodacaoRepository = acomodacaoRepository;
     }
 
+    public AcomodacaoDTO buscarAcomodacaoPorId(int id) {
+        AcomodacaoEntity acomodacaoEntity = acomodacaoRepository.findById(id)
+                .orElseThrow(() -> new AcomodacaoNaoEncontradaException("A acomodação com ID " + id + " não existe."));
+
+        return modelMapper.map(acomodacaoEntity, AcomodacaoDTO.class);
+    }
+
     public List<AcomodacaoDTO> buscarTodasAcomodacoes() {
         List<AcomodacaoEntity> acomodacaoEntities = acomodacaoRepository.findAll();
 
