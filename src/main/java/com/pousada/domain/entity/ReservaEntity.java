@@ -2,7 +2,6 @@ package com.pousada.domain.entity;
 
 import com.pousada.enums.StatusPagamentoEnum;
 import com.pousada.enums.StatusReservaEnum;
-import com.pousada.enums.TipoReservaEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,14 +21,11 @@ public class ReservaEntity {
 
     private LocalDateTime dataHora;
 
-    @Enumerated(EnumType.STRING)
-    private TipoReservaEnum tipo;
-
     private LocalDate checkIn;
 
     private LocalDate checkOut;
 
-    private int numeroDias;
+    private int numeroPernoites;
 
     private Double custo;
 

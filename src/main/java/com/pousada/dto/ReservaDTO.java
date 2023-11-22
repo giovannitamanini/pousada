@@ -2,7 +2,6 @@ package com.pousada.dto;
 
 import com.pousada.enums.StatusPagamentoEnum;
 import com.pousada.enums.StatusReservaEnum;
-import com.pousada.enums.TipoReservaEnum;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -13,21 +12,19 @@ public class ReservaDTO {
 
     private int id;
 
-    private StatusReservaEnum statusReserva;
+    private StatusReservaEnum statusReserva = StatusReservaEnum.EM_ESPERA;
 
-    private LocalDateTime dataHora;
-
-    private TipoReservaEnum tipo;
+    private LocalDateTime dataHora = LocalDateTime.now();
 
     private LocalDate checkIn;
 
     private LocalDate checkOut;
 
-    private int numeroDias;
+    private int numeroPernoites;
 
     private Double custo;
 
-    private StatusPagamentoEnum statusPagamento;
+    private StatusPagamentoEnum statusPagamento = StatusPagamentoEnum.PENDENTE;
 
     private int idAcomodacao;
 
