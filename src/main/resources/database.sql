@@ -50,13 +50,13 @@ CREATE TABLE imagem_acomodacao (
 
 CREATE TABLE reserva (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    status_reserva VARCHAR(10) DEFAULT "EM_ESPERA",
+    status_reserva VARCHAR(10) NOT NULL,
     data_hora TIMESTAMP NOT NULL,
     check_in DATE NOT NULL,
     check_out DATE NOT NULL,
-    numero_dias INT NOT NULL,
+    numero_pernoites INT NOT NULL,
     custo DECIMAL(6,2) NOT NULL,
-    status_pagamento VARCHAR(30) DEFAULT "PENDENTE",
+    status_pagamento VARCHAR(30) NOT NULL,
     id_acomodacao INT NOT NULL,  
     id_hospede INT NOT NULL, 
     FOREIGN KEY (id_acomodacao) REFERENCES acomodacao(id),
@@ -65,12 +65,12 @@ CREATE TABLE reserva (
 
 CREATE TABLE estadia (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    status_estadia VARCHAR(15) DEFAULT "EM_ANDAMENTO",
+    status_estadia VARCHAR(15) NOT NULL,
 	check_in DATE NOT NULL,
     check_out DATE NOT NULL,
-    numero_dias INT NOT NULL,
+    numero_pernoites INT NOT NULL,
     custo DECIMAL(6,2) NOT NULL,
-    status_pagamento VARCHAR(30) DEFAULT "PENDENTE",
+    status_pagamento VARCHAR(30) NOT NULL,
     id_acomodacao INT NOT NULL,
     id_hospede INT NOT NULL,
     id_reserva INT NOT NULL,
