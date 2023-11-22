@@ -50,9 +50,8 @@ CREATE TABLE imagem_acomodacao (
 
 CREATE TABLE reserva (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    status_reserva VARCHAR(10) DEFAULT "CONFIRMADA",
+    status_reserva VARCHAR(10) DEFAULT "EM_ESPERA",
     data_hora TIMESTAMP NOT NULL,
-    tipo VARCHAR(15) NOT NULL,
     check_in DATE NOT NULL,
     check_out DATE NOT NULL,
     numero_dias INT NOT NULL,
