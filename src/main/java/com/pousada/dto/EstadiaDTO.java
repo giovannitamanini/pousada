@@ -11,13 +11,13 @@ public class EstadiaDTO {
 
     private int id;
 
-    private StatusEstadiaEnum statusEstadia;
+    private StatusEstadiaEnum statusEstadia = StatusEstadiaEnum.EM_ANDAMENTO;
 
     private LocalDate checkIn;
 
     private LocalDate checkOut;
 
-    private int numeroDias;
+    private int numeroPernoites;
 
     private Double custo;
 

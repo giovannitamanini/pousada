@@ -28,18 +28,19 @@ public class EstadiaService {
 
     //A partir dos dados no front-end da reserva, mando a requisição de criação da estadia no BD
     public EstadiaDTO iniciarEstadia(ReservaDTO reservaDTO) {
-        StatusPagamentoEnum statusPagamentoReserva = reservaDTO.getStatusPagamento();
-
-        reservaDTO.setStatusReserva(StatusReservaEnum.CONFIRMADA);
-        ReservaEntity reservaEntity = modelMapper.map(reservaDTO, ReservaEntity.class);
-        reservaRepository.save(reservaEntity);
+        ReservaEntity reservaExistente = reservaRepository.findById(reservaDTO.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Reserva não encontrada"));
+        reservaExistente.setStatusReserva(StatusReservaEnum.CONFIRMADA);
+        reservaRepository.save(reservaExistente);
 
         EstadiaDTO estadiaDTO = new EstadiaDTO();
+
+        StatusPagamentoEnum statusPagamentoReserva = reservaDTO.getStatusPagamento();
 
         if (statusPagamentoReserva == StatusPagamentoEnum.PENDENTE) {
             estadiaDTO.setCheckIn(reservaDTO.getCheckIn());
             estadiaDTO.setCheckOut(reservaDTO.getCheckOut());
-            estadiaDTO.setNumeroDias(reservaDTO.getNumeroDias());
+            estadiaDTO.setNumeroPernoites(reservaDTO.getNumeroPernoites());
             estadiaDTO.setCusto(reservaDTO.getCusto());
             estadiaDTO.setStatusPagamento(reservaDTO.getStatusPagamento());
             estadiaDTO.setIdAcomodacao(reservaDTO.getIdAcomodacao());
@@ -48,7 +49,7 @@ public class EstadiaService {
         } else if (statusPagamentoReserva == StatusPagamentoEnum.EFETUADO) {
             estadiaDTO.setCheckIn(reservaDTO.getCheckIn());
             estadiaDTO.setCheckOut(reservaDTO.getCheckOut());
-            estadiaDTO.setNumeroDias(reservaDTO.getNumeroDias());
+            estadiaDTO.setNumeroPernoites(reservaDTO.getNumeroPernoites());
             estadiaDTO.setCusto(0.00);
             estadiaDTO.setStatusPagamento(StatusPagamentoEnum.PENDENTE);
             estadiaDTO.setIdAcomodacao(reservaDTO.getIdAcomodacao());

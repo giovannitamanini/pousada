@@ -22,7 +22,7 @@ public class EstadiaEntity {
 
     private LocalDate checkOut;
 
-    private int numeroDias;
+    private int numeroPernoites;
 
     private Double custo;
 
