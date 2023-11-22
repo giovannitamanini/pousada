@@ -3,9 +3,8 @@ package com.pousada.controller;
 import com.pousada.dto.EstadiaDTO;
 import com.pousada.service.EstadiaService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
@@ -14,6 +13,8 @@ public class EstadiaController {
 
     private final EstadiaService estadiaService;
 
+    @PostMapping("/estadias")
+    @ResponseStatus(HttpStatus.CREATED)
     public EstadiaDTO iniciarEstadia(@RequestBody EstadiaDTO estadia) {
         return estadiaService.iniciarEstadia(estadia);
     }
