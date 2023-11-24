@@ -13,6 +13,8 @@ import com.pousada.exception.ReservaNaoEncontradaException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,9 +43,10 @@ public class ReservaService {
         }
 
         ReservaEntity reservaEntity = modelMapper.map(reservaDTO, ReservaEntity.class);
-
-        double custoAcomodacao = acomodacaoRepository.buscarValorDiariaPorId(reservaEntity.getIdAcomodacao());
-        reservaEntity.setCusto(custoAcomodacao);
+        reservaEntity.setNumeroPernoites((int) ChronoUnit.DAYS.between(reservaEntity.getCheckIn(), reservaEntity.getCheckOut()));
+        double custoDiariaAcomodacao = acomodacaoRepository.buscarValorDiariaPorId(reservaEntity.getIdAcomodacao());
+        double custoReserva = custoDiariaAcomodacao * reservaEntity.getNumeroPernoites();
+        reservaEntity.setCusto(custoReserva);
         ReservaEntity reservaEntitySalva = reservaRepository.save(reservaEntity);
 
         return modelMapper.map(reservaEntitySalva, ReservaDTO.class);
