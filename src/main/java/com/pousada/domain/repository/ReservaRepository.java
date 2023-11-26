@@ -25,4 +25,7 @@ public interface ReservaRepository extends CrudRepository<ReservaEntity, Integer
             @Param("checkIn") LocalDate checkIn,
             @Param("checkOut") LocalDate checkOut);
 
+    @Query(value = "SELECT * FROM reserva WHERE status_reserva = 'EM_ESPERA'",
+            nativeQuery = true)
+    List<ReservaEntity> buscarReservasEmEspera();
 }

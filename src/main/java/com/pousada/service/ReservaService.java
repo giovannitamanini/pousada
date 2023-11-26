@@ -13,7 +13,6 @@ import com.pousada.exception.ReservaNaoEncontradaException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -98,7 +97,7 @@ public class ReservaService {
         return true;
     }
 
-    private boolean existeEstadiaNoPeriodo(ReservaDTO novaReserva) {
+    public boolean existeEstadiaNoPeriodo(ReservaDTO novaReserva) {
         EstadiaEntity estadiaEntity = estadiaRepository.buscarEstadiaPorAcomodacaoEPeriodo(
                 novaReserva.getIdAcomodacao(),
                 novaReserva.getCheckIn()
@@ -111,6 +110,19 @@ public class ReservaService {
             return false;
 
         return true;
+    }
+
+    public List<ReservaDTO> buscarReservasEmEspera() {
+        List<ReservaEntity> reservaEntities = reservaRepository.buscarReservasEmEspera();
+
+        if (reservaEntities.isEmpty())
+            throw new ReservaNaoEncontradaException("Nenhuma reserva em espera!");
+
+        List<ReservaDTO> reservaDTOs = reservaEntities.stream()
+                .map(reservaEntity -> modelMapper.map(reservaEntity, ReservaDTO.class))
+                .collect(Collectors.toList());
+
+        return reservaDTOs;
     }
 
 }

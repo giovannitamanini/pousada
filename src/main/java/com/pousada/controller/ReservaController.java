@@ -1,5 +1,6 @@
 package com.pousada.controller;
 
+import com.pousada.dto.EstadiaDTO;
 import com.pousada.dto.ReservaDTO;
 import com.pousada.service.ReservaService;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,11 @@ public class ReservaController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarReservaPorId(@PathVariable int id) {
         reservaService.deletarReservaPorId(id);
+    }
+
+    @GetMapping("/reservas/em_espera")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ReservaDTO> buscarReservasEmEspera() {
+        return reservaService.buscarReservasEmEspera();
     }
 }

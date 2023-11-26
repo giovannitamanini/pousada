@@ -10,6 +10,7 @@ import com.pousada.dto.ReservaDTO;
 import com.pousada.enums.StatusEstadiaEnum;
 import com.pousada.enums.StatusPagamentoEnum;
 import com.pousada.enums.StatusReservaEnum;
+import com.pousada.exception.AcomodacaoOcupadaException;
 import com.pousada.exception.EstadiaNaoEncontradaException;
 import com.pousada.exception.ReservaNaoEncontradaException;
 import org.modelmapper.ModelMapper;
@@ -36,6 +37,9 @@ public class EstadiaService {
 
     //A partir dos dados no front-end da reserva, mando a requisição de criação da estadia no BD
     public EstadiaDTO iniciarEstadia(ReservaDTO reservaDTO) {
+        if (existeEstadiaNoPeriodo(reservaDTO)) {
+            throw new AcomodacaoOcupadaException("A estadia já foi iniciada!");
+        }
         ReservaEntity reservaExistente = reservaRepository.findById(reservaDTO.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Reserva não encontrada"));
         reservaExistente.setStatusReserva(StatusReservaEnum.CONFIRMADA);
@@ -107,6 +111,21 @@ public class EstadiaService {
                 .collect(Collectors.toList());
 
         return estadiaDTOs;
+    }
+
+    public boolean existeEstadiaNoPeriodo(ReservaDTO novaReserva) {
+        EstadiaEntity estadiaEntity = estadiaRepository.buscarEstadiaPorAcomodacaoEPeriodo(
+                novaReserva.getIdAcomodacao(),
+                novaReserva.getCheckIn()
+        );
+
+        if (estadiaEntity == null)
+            return false;
+
+        if (estadiaEntity.getStatusEstadia() == StatusEstadiaEnum.FINALIZADA)
+            return false;
+
+        return true;
     }
 }
 
