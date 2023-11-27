@@ -6,6 +6,8 @@ SELECT * FROM reserva;
 
 SELECT * FROM estadia;
 
+SELECT * FROM estadia WHERE id = 1 AND status_estadia = 'EM_ANDAMENTO';
+
 SELECT * FROM hospede WHERE nome = 'Teste';
 
 SELECT * FROM reserva WHERE id_acomodacao = 4 AND (
