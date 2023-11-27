@@ -41,13 +41,6 @@ CREATE TABLE acomodacao (
 	condicoes VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE imagem_acomodacao (
-	id INT PRIMARY KEY,
-    url VARCHAR(255),
-    id_acomodacao INT NOT NULL,
-    FOREIGN KEY (id_acomodacao) REFERENCES acomodacao(id)
-);
-
 CREATE TABLE reserva (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     status_reserva VARCHAR(10) NOT NULL,
