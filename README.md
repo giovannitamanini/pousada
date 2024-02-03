@@ -1,6 +1,6 @@
 # Back-End Pousada
 
-Projeto back-end em Java Spring Boot para o gerenciamento de uma pousada. Os testes foram feitos utilizando o Insomnia para os End-points. Será feito um container Docker para distribuição e serão adicionados testes unitários.
+Projeto back-end em Java Spring Boot para o gerenciamento de uma pousada. Os testes foram feitos utilizando o Insomnia para os End-points. Próximos passos: será feito um Docker container para distribuição e serão adicionados testes unitários.
 
 ## Pré-requisitos
 
@@ -10,9 +10,10 @@ Projeto back-end em Java Spring Boot para o gerenciamento de uma pousada. Os tes
 
 ## Configuração do Ambiente de Desenvolvimento
 
-Esse é o próximo passo do desenvolvimento do projeto, criar um Docker container 
+Esse é o próximo passo do desenvolvimento do projeto, criar um Docker container.
 
-O aplicativo estará disponível em [http://localhost:8080](http://localhost:8080).
+## Versão da aplicação
+Back-End Pousada v1.0.0
 
 ## Contato
 
