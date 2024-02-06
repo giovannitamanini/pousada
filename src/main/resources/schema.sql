@@ -1,10 +1,8 @@
-DROP DATABASE IF EXISTS pousada;
-
-CREATE DATABASE pousada;
+CREATE DATABASE IF NOT EXISTS pousada;
 
 USE pousada;
 
-CREATE TABLE informacao_pousada (
+CREATE TABLE IF NOT EXISTS informacao_pousada (
 	nome VARCHAR(45),
     endereco_1 VARCHAR(60),
     endereco_2 VARCHAR(60),
@@ -17,7 +15,7 @@ CREATE TABLE informacao_pousada (
     whatsapp VARCHAR(100)
 );
 
-CREATE TABLE hospede (
+CREATE TABLE IF NOT EXISTS hospede (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	cpf VARCHAR(14) NOT NULL,
     nome VARCHAR(45) NOT NULL,
@@ -29,7 +27,7 @@ CREATE TABLE hospede (
     profissao VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE acomodacao (
+CREATE TABLE IF NOT EXISTS acomodacao (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	numero INT DEFAULT 0,
     tipo VARCHAR(100) NOT NULL,
@@ -41,7 +39,7 @@ CREATE TABLE acomodacao (
 	condicoes VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE reserva (
+CREATE TABLE IF NOT EXISTS reserva (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     status_reserva VARCHAR(10) NOT NULL,
     data_hora TIMESTAMP NOT NULL,
@@ -50,13 +48,13 @@ CREATE TABLE reserva (
     numero_pernoites INT NOT NULL,
     custo DECIMAL(6,2) NOT NULL,
     status_pagamento VARCHAR(30) NOT NULL,
-    id_acomodacao INT NOT NULL,  
-    id_hospede INT NOT NULL, 
+    id_acomodacao INT NOT NULL,
+    id_hospede INT NOT NULL,
     FOREIGN KEY (id_acomodacao) REFERENCES acomodacao(id),
     FOREIGN KEY (id_hospede) REFERENCES hospede(id)
 );
 
-CREATE TABLE estadia (
+CREATE TABLE IF NOT EXISTS estadia (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     status_estadia VARCHAR(15) NOT NULL,
 	check_in DATE NOT NULL,
@@ -72,24 +70,27 @@ CREATE TABLE estadia (
 	FOREIGN KEY (id_reserva) REFERENCES reserva(id)
 );
 
-CREATE TABLE hospede_estadia (
-	id_estadia INT NOT NULL,  
-    id_hospede INT NOT NULL,  
+CREATE TABLE IF NOT EXISTS hospede_estadia (
+	id_estadia INT NOT NULL,
+    id_hospede INT NOT NULL,
     FOREIGN KEY (id_estadia) REFERENCES estadia(id),
     FOREIGN KEY (id_hospede) REFERENCES hospede(id)
 );
 
-CREATE TABLE servico_pousada (
+CREATE TABLE IF NOT EXISTS servico_pousada (
 	id INT PRIMARY KEY,
     descricao VARCHAR(45) NOT NULL
 );
 
-CREATE TABLE servico_consumido (
+CREATE TABLE IF NOT EXISTS servico_consumido (
 	id INT PRIMARY KEY,
     data_hora TIMESTAMP NOT NULL,
     custo DECIMAL(8,2) NOT NULL,
-    id_estadia INT NOT NULL,  
+    id_estadia INT NOT NULL,
     id_servico_pousada INT NOT NULL,
     FOREIGN KEY (id_estadia) REFERENCES estadia(id),
     FOREIGN KEY (id_servico_pousada) REFERENCES servico_pousada(id)
 );
+
+ALTER TABLE informacao_pousada ADD UNIQUE KEY (nome);
+ALTER TABLE acomodacao ADD UNIQUE KEY (tipo);
