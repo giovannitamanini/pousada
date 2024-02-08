@@ -1,7 +1,7 @@
-FROM eclipse-temurin:17-jdk-jammy
+#FROM eclipse-temurin
 
-WORKDIR /app
+#WORKDIR /app
 
-ADD target/pousada-0.0.1-SNAPSHOT.jar pousada.jar
+#ADD target/pousada-0.0.1-SNAPSHOT.jar /app/pousada-0.0.1-SNAPSHOT.jar
 
-CMD ["java", "-jar", "pousada.jar"]
+#ENTRYPOINT ["java", "-jar", "pousada-0.0.1-SNAPSHOT.jar"]
