@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS pousada;
 USE pousada;
 
 CREATE TABLE IF NOT EXISTS informacao_pousada (
-	nome VARCHAR(45),
+	nome VARCHAR(45) PRIMARY KEY,
     endereco_1 VARCHAR(60),
     endereco_2 VARCHAR(60),
     cep VARCHAR(9),
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS hospede (
 );
 
 CREATE TABLE IF NOT EXISTS acomodacao (
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY,
 	numero INT DEFAULT 0,
     tipo VARCHAR(100) NOT NULL,
     valor_diaria DECIMAL(6,2) NOT NULL,
@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS hospede_estadia (
 	id_estadia INT NOT NULL,
     id_hospede INT NOT NULL,
     FOREIGN KEY (id_estadia) REFERENCES estadia(id),
-    FOREIGN KEY (id_hospede) REFERENCES hospede(id)
+    FOREIGN KEY (id_hospede) REFERENCES hospede(id),
+    PRIMARY KEY (id_estadia, id_hospede)
 );
 
 CREATE TABLE IF NOT EXISTS servico_pousada (
@@ -91,6 +92,3 @@ CREATE TABLE IF NOT EXISTS servico_consumido (
     FOREIGN KEY (id_estadia) REFERENCES estadia(id),
     FOREIGN KEY (id_servico_pousada) REFERENCES servico_pousada(id)
 );
-
-ALTER TABLE informacao_pousada ADD UNIQUE KEY (nome);
-ALTER TABLE acomodacao ADD UNIQUE KEY (tipo);
