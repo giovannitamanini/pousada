@@ -34,6 +34,7 @@ Modelo da estrutura e relacionamentos das entidades do banco de dados construíd
 ## Próximos passos
 
 - Dockerizar completamente a aplicação.
+- Testar endpoints com o Swagger
 - Testes unitários.
 
 ## Versão da aplicação
