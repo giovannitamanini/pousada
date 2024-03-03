@@ -34,3 +34,7 @@ build/
 
 ### Env ###
 *.env
+
+### Git Ignore Temp###
+..gitignore.un~
+.gitignore~
