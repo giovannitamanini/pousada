@@ -17,7 +17,7 @@ Projeto back-end em Java Spring Boot para o gerenciamento de uma pousada. Segue 
     - O mesmo valor modificado anteriormente em docker-compose.yml, deve ser especificado em application.properties em :
     ```spring.datasource.url=jdbc:mysql://localhost:XXXX/```
 
-- Executar na raiz do projeto (\pousada>) os seguintes comandos para configuração e criação do banco de dados:
+- Executar na raiz do projeto (\pousada>) os seguintes comandos para configuração e inicialização do MySQL:
 
     ```docker-compose build```
 

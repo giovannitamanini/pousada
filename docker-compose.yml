@@ -4,8 +4,8 @@ services:
   database:
     image: mysql:latest
     container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: 12345
+    env_file:
+      - mysql.env
     ports:
       - "3308:3306"
     volumes:
