@@ -25,6 +25,10 @@ Projeto back-end em Java Spring Boot para o gerenciamento de uma pousada. Segue 
 
 - Iniciar a aplicação
 
+- (Opcional) Ver documentação e fazer testes com a aplicação utilizando o Swagger. Abrir a Swagger-UI em:
+
+  ```http://localhost:8080/swagger-ui/index.html```
+
 ## Modelo entidade relacionamento
 
 Modelo da estrutura e relacionamentos das entidades do banco de dados construído para a aplicação:
@@ -34,7 +38,6 @@ Modelo da estrutura e relacionamentos das entidades do banco de dados construíd
 ## Próximos passos
 
 - Dockerizar completamente a aplicação.
-- Testar endpoints com o Swagger
 - Testes unitários.
 
 ## Versão da aplicação
