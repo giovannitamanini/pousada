@@ -23,7 +23,7 @@ public class AcomodacaoController {
     @Operation(summary = "Busca acomodações da pousada a partir do Id da acomodação", method = "GET")
     @GetMapping("/acomodacoes/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public AcomodacaoDTO buscarAcomodacaoPorId(@RequestParam("Id") @PathVariable int id) {
+    public AcomodacaoDTO buscarAcomodacaoPorId(@PathVariable int id) {
         return acomodacaoService.buscarAcomodacaoPorId(id);
     }
 
