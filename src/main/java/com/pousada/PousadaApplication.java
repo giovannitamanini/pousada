@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Pousada", version = "1", description = "Aplicação back-end para o sistema de gerenciamento de uma pousada"))
+@OpenAPIDefinition(info = @Info(title = "Pousada Back-End", version = "1", description = "Aplicação back-end para o sistema de gerenciamento de uma pousada"))
 public class PousadaApplication {
 
 	public static void main(String[] args) {
