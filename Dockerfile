@@ -1,7 +1,7 @@
-#FROM eclipse-temurin
+FROM openjdk:17-jdk-alpine
 
-#WORKDIR /app
+COPY target/pousada-0.0.1-SNAPSHOT.jar pousada-0.0.1-SNAPSHOT.jar
 
-#ADD target/pousada-0.0.1-SNAPSHOT.jar /app/pousada-0.0.1-SNAPSHOT.jar
+EXPOSE 8080
 
-#ENTRYPOINT ["java", "-jar", "pousada-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/pousada-0.0.1-SNAPSHOT.jar"]
