@@ -1,46 +1,23 @@
 # Back-End Pousada
 
-Projeto back-end em Java Spring Boot para o gerenciamento de uma pousada. Segue o padrão de arqutetura MVC. Os testes foram feitos utilizando HTTP requests com o Insomnia para os End-points da aplicação. 
+Projeto back-end para o gerenciamento de uma pousada em Java Spring Boot que segue o padrão de arquitetura de três camadas. É utilizando o banco de dados MySQL. Durante o desenvolvimento os testes foram feitos utilizando HTTP requests com o Insomnia para os endpoints da aplicação. Posteriormente a aplicação foi portada para contêineres Docker para facilitar a implantação e a execução em diferentes ambientes. Em seguida, a API foi documentada utilizando o Swagger, proporcionando uma interface intuitiva para explorar e entender os endpoints, parâmetros e respostas da aplicação, facilitando o desenvolvimento de clientes front-end e integrações de serviços.   
 
 ## Pré-requisitos
 
 - Intellij
-- Java (build 17.0.9+11-LTS-201)
-- Spring Boot (3.1.5) + dependências (vide pom.xml)
 - Docker
 
 ## Configuração do Ambiente de Desenvolvimento
 
-- Depois de feito o download das dependências com o Maven siga os passos abaixo:  
+- Executar na raiz do projeto (\pousada>) o seguinte comando para a compilação do projeto e criação da imagem do container com o servidor:
 
+    ```docker build -t pousada-server .```
 
-- Para ambiente de desenvolvimento, utilizar em application.properties o seguinte:
-
-  ```spring.sql.init.mode=always```
-
-  Se for utilizar o perfil de testes manter:
-
-  ```spring.sql.init.mode=never```
-
-  Assim, os scripts para o banco de dados MySQL do ambiente de desenvolvimento não serão executados.  
-
-    
-- Se for preciso, altere o valor do parâmetro ports no docker-compose.yml de 3308:3306 para alguma porta ainda não utilizada XXXX:3306
-    - O mesmo valor modificado anteriormente em docker-compose.yml, deve ser especificado em application.properties em :
-    ```spring.datasource.url=jdbc:mysql://localhost:XXXX/```  
-
-
-- Executar na raiz do projeto (\pousada>) os seguintes comandos para construção do container e inicialização do MySQL:
-
-    ```docker-compose build```
+- Para a build do container com o MySQL e posterior início dos serviços definidos no docker-compose.yml, execute o seguinte comando:
 
     ```docker-compose up```
 
-
-- Iniciar a aplicação Spring Boot
-
-
-- (Opcional) Ver documentação e fazer testes com a aplicação utilizando o Swagger. Abrir a Swagger-UI em:
+- (Opcional) Ver documentação e explorar os endpoints da aplicação com o Swagger. Abrir a Swagger-UI em:
 
   ```http://localhost:8080/swagger-ui/index.html```
 
@@ -53,7 +30,6 @@ Modelo da estrutura e relacionamentos das entidades do banco de dados construíd
 ## Próximos passos
 
 - Fazer alguns testes unitários.
-- Dockerizar completamente a aplicação.
 
 ## Versão da aplicação
 
