@@ -4,7 +4,6 @@ Projeto back-end para o gerenciamento de uma pousada em Java Spring Boot que seg
 
 ## Pré-requisitos
 
-- Intellij
 - Docker
 
 ## Configuração do Ambiente de Desenvolvimento
